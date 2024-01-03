@@ -9,9 +9,11 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#sugarFree">Sin azúcar</Nav.Link>
-            <Nav.Link href="#celiac">Celíaco</Nav.Link>
-            <Nav.Link href="#vegan">Vegano</Nav.Link>
+            <Nav.Link href="#plants">Plantas</Nav.Link>
+            <Nav.Link href="#pots">Macetas</Nav.Link>
+            <Nav.Link href="#accesories">Accesorios</Nav.Link>
+            <Nav.Link href="#products">Productos</Nav.Link>
+              <Nav.Link href="#misc">Varios</Nav.Link>
           </Nav>
           <CartWidget />
         </Navbar.Collapse>
