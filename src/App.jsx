@@ -1,15 +1,24 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemCount/ItemCount";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   return (
-    <>
+    <div className="App">
+    <BrowserRouter>
       <NavBar />
-      <ItemListContainer greeting={"Bienvenidos a Mercado Verde"} />
-      <ItemCount stock={10} initial={1} onAdd={(quantity) => console.log('Cantidad agregada',quantity)}/>
-    </>
+    <Routes>
+        <Route path="/" element={<ItemListContainer/>} />
+        <Route path='/products' element={<ItemListContainer />} />
+        <Route path="/products/:categoryId" element={<ItemListContainer/>} />
+        <Route path="/product/:productId" element={<ItemDetailContainer/>} />
+        <Route path='*' element={<PageNotFound />} />
+    </Routes>
+    </BrowserRouter>
+    </div>
   );
 }
 
