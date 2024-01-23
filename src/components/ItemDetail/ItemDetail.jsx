@@ -19,7 +19,7 @@ const ItemDetail = ({ item }) => {
         <p className={styles.Info}>Precio: ${price}</p>
       </section>
       <footer className={styles.ItemFooter}>
-        <ItemCount stock={10} initial={1} onAdd={(quantity) => console.log('Cantidad agregada', quantity)} />
+        <ItemCount stock={stock} initial={1} onAdd={(quantity) => console.log('Agregaste', quantity, name, 'al carrito')} />
       </footer>
     </article>
   );

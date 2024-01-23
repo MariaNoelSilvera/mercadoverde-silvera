@@ -28,7 +28,7 @@ const ItemListContainer = () => {
     <div className={styles["item-list-container"]}>
       <div className={styles["item-list-header"]}>
         <h2 className={styles["item-list-title"]}>
-          {categoryId ? `Productos en ${categoryId}` : "Todos los productos"}
+          {categoryId ? `${categoryId}` : "Todos los productos"}
         </h2>
       </div>
       {loading ? (

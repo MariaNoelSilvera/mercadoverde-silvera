@@ -1,17 +1,18 @@
 .cart-widget-container {
   display: flex;
   align-items: center;
+   padding-right: 20px;
 }
 
 .cart-icon {
   margin-right: 5px;
-  width: 36px; /* Adjust the width as needed */
-  height: 36px; /* Adjust the height as needed */
+  width: 36px; 
+  height: 36px; 
 }
 
 .cart-count {
   color: black;
   font-weight: bold;
-  font-size: 1rem; /* Adjust the font size as needed */
+  font-size: 1rem; 
 }
 
