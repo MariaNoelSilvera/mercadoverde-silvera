@@ -17,6 +17,7 @@ const ItemListContainer = () => {
           (product) => product.category === categoryId
         )
         setItems(filteredProducts)
+        setLoading(false)
       } else {
         setItems(products)
         setLoading(false)
