@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import styles from "./ItemCount.module.scss"; // Import the SCSS module
+import styles from "./ItemCount.module.scss";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [quantity, setQuantity] = useState(initial);
@@ -41,7 +41,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   );
 };
 
-// Define prop types for ItemCount
 ItemCount.propTypes = {
   stock: PropTypes.number.isRequired,
   initial: PropTypes.number.isRequired,

@@ -1,5 +1,7 @@
-const PageNotFound = () => {
-  return <div>PageNotFound</div>
-}
+import styles from './PageNotFound.module.scss'
 
-export default PageNotFound
+const PageNotFound = () => {
+  return <div className={styles.PageNotFound}>Page Not Found</div>;
+};
+
+export default PageNotFound;

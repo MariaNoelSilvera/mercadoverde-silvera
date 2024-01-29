@@ -21,11 +21,19 @@ const NavBar = () => {
         <Logo />
       </Link>
       <div className={styles["Categories"]}>
+        <Link
+            to='/'>
+               <div className={styles["category-link"]}>Home</div>
+          
+         
+          </Link>
           <Link
             to='/products'
             className={({ isactive }) =>
             isactive ? "ActiveOption" : "Option"}>
+          
             <div className={styles["category-link"]}>Todos los productos</div>
+         
           </Link>
         {categories.map((category, index) => (
           <Link

@@ -50,7 +50,7 @@ const products = [
         price: 800,
         category: 'Macetas',
         image: 'https://brote.uy/2776-large_default/maceta-hombre.jpg',
-        stock: 0,
+        stock: 12,
         description: 'Maceta mujer'
     }
 ]

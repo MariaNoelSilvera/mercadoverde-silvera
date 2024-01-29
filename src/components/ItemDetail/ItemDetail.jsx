@@ -1,9 +1,16 @@
+import { Link } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
 import styles from './ItemDetail.module.scss';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const ItemDetail = ({ item }) => {
-      const { name, price, image, stock, description } = item
+  const { name, price, image, stock, description } = item;
+  const [quantityAdded, setQuantityAdded] = useState(0);
+
+  const handleOnAdd = (quantity) => {
+    setQuantityAdded(quantity);
+  };
 
   return (
     <article className={styles.CardItem}>
@@ -19,7 +26,16 @@ const ItemDetail = ({ item }) => {
         <p className={styles.Info}>Precio: ${price}</p>
       </section>
       <footer className={styles.ItemFooter}>
-        <ItemCount stock={stock} initial={1} onAdd={(quantity) => console.log('Agregaste', quantity, name, 'al carrito')} />
+        {quantityAdded > 0 ? (
+          <div>
+            <Link to='/cart' className="Option">
+            <p className={styles.SuccessText}>{`Agregaste ${quantityAdded} ${name} al carrito`}</p>
+              <button className={styles.Option}>Finalizar compra</button>
+            </Link>
+          </div>
+        ) : (
+          <ItemCount stock={stock} initial={1} onAdd={handleOnAdd} />
+        )}
       </footer>
     </article>
   );
@@ -35,6 +51,5 @@ ItemDetail.propTypes = {
     description: PropTypes.string,
   }).isRequired,
 };
-
 
 export default ItemDetail;
