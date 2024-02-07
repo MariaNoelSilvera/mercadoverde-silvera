@@ -1,9 +1,10 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "../Spinner/Spinner";
-import { getProductsById } from "../../utils/MockData";
 import { useParams } from "react-router-dom";
 import styles from './ItemDetailContainer.module.scss';
 import { useState, useEffect } from "react";
+import { collection, getDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
@@ -11,9 +12,11 @@ const ItemDetailContainer = () => {
   const { productId } = useParams();
 
 useEffect(() => {
-  const numericProductId = parseInt(productId, 10);
-  getProductsById(numericProductId).then((product) => {
-    setItem(product);
+  const productsCollection = collection(db, 'products')
+  const refDoc = doc(productsCollection, productId)
+  getDoc(refDoc)
+  .then((doc) => {
+    setItem({id: doc.id, ...doc.data()});
     setLoading(false);
   }).catch((error) => {
     console.error(error);

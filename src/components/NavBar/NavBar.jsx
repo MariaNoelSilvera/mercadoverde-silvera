@@ -24,16 +24,12 @@ const NavBar = () => {
         <Link
             to='/'>
                <div className={styles["category-link"]}>Home</div>
-          
-         
           </Link>
           <Link
             to='/products'
             className={({ isactive }) =>
             isactive ? "ActiveOption" : "Option"}>
-          
             <div className={styles["category-link"]}>Todos los productos</div>
-         
           </Link>
         {categories.map((category, index) => (
           <Link
@@ -49,6 +45,5 @@ const NavBar = () => {
     </div>
   );
 }
-
 
 export default NavBar;

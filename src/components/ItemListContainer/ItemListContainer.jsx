@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
-import { getProducts } from "../../utils/MockData";
 import styles from "./ItemListContainer.module.scss";
 import { useState, useEffect } from "react";
+import { db } from "../../firebase/config";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -11,18 +12,31 @@ const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    getProducts().then((products) => {
-      if (categoryId) {
-        const filteredProducts = products.filter(
-          (product) => product.category === categoryId
+    const productsCollection = collection(db, 'products')
+    if (categoryId){
+        const queryCollection = query(
+            productsCollection,
+            where('category', '==', categoryId)
         )
-        setItems(filteredProducts)
-        setLoading(false)
-      } else {
-        setItems(products)
-        setLoading(false)
-      }
-    })
+        getDocs(queryCollection).then(({ docs }) => {
+            const products = docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }))
+            setItems(products)
+            setLoading(false)
+        })
+    } else {
+         getDocs(productsCollection).then(({ docs }) => {
+         const products = docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }))
+            setItems(products)
+            setLoading(false)
+        })
+
+    }
   }, [categoryId])
 
   return (
