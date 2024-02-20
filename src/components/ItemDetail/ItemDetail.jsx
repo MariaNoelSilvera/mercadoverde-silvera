@@ -3,13 +3,16 @@ import ItemCount from '../ItemCount/ItemCount';
 import styles from './ItemDetail.module.scss';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useCartContext } from '../../context/CartContext';
 
 const ItemDetail = ({ item }) => {
   const { name, price, image, stock, description } = item;
   const [quantityAdded, setQuantityAdded] = useState(0);
+  const { addItem } = useCartContext()
 
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
+    addItem(item, quantity);
   };
 
   return (

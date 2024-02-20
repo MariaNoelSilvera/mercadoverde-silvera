@@ -114,7 +114,3 @@ export const getProductsByCategory = (categoryId) => {
         },500)   
     })
 }
-
-export const getProductsAsync = () => {
-  return fetch('https://fakestoreapi.com/products').then((res) => res.json())
-}

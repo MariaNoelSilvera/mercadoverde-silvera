@@ -6,7 +6,6 @@ import { getCategories } from "../../utils/MockData";
 import { useEffect, useState } from 'react'
 
 const NavBar = () => {
-    
     const [categories, setCategories] = useState([])
 
       useEffect(() => {
@@ -41,7 +40,9 @@ const NavBar = () => {
           </Link>
         ))}
       </div>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
     </div>
   );
 }

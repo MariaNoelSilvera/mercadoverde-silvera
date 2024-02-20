@@ -5,10 +5,13 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Home from "./pages/Home";
+import Cart from "./components/Cart/Cart";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
     <div className="App">
+      <CartProvider>
     <BrowserRouter>
       <NavBar />
     <Routes>
@@ -17,9 +20,10 @@ function App() {
         <Route path="/products/:categoryId" element={<ItemListContainer/>} />
         <Route path="/product/:productId" element={<ItemDetailContainer/>} />
         <Route path='*' element={<PageNotFound />} />
-        <Route path='/cart' element={<PageNotFound />} />
+        <Route path='/cart' element={<Cart />} />
     </Routes>
     </BrowserRouter>
+    </CartProvider>
     </div>
   );
 }
