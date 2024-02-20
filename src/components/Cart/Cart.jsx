@@ -1,4 +1,4 @@
-import styles from './cart.module.scss';
+import styles from './Cart.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Item from '../Item/Item';
