@@ -6,38 +6,36 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
+const fetchItems = async (collectionRef) => {
+  const { docs } = await getDocs(collectionRef);
+  const products = docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return products;
+};
+
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
   useEffect(() => {
-    const productsCollection = collection(db, 'products')
-    if (categoryId){
-        const queryCollection = query(
-            productsCollection,
-            where('category', '==', categoryId)
-        )
-        getDocs(queryCollection).then(({ docs }) => {
-            const products = docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
-            setItems(products)
-            setLoading(false)
-        })
-    } else {
-         getDocs(productsCollection).then(({ docs }) => {
-         const products = docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }))
-            setItems(products)
-            setLoading(false)
-        })
+    const productsCollection = collection(db, 'products');
+    const queryCollection = categoryId
+      ? query(productsCollection, where('category', '==', categoryId))
+      : productsCollection;
 
-    }
-  }, [categoryId])
+    fetchItems(queryCollection)
+      .then((products) => {
+        setItems(products);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching items:", error);
+        setLoading(false);
+      });
+  }, [categoryId]);
 
   return (
     <div className={styles["item-list-container"]}>
