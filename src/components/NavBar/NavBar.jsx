@@ -2,17 +2,32 @@ import CartWidget from "../CartWidget/CartWidget";
 import styles from './NavBar.module.scss'
 import Logo from '../Logo/Logo'
 import { Link } from "react-router-dom";
-import { getCategories } from "../../utils/MockData";
 import { useEffect, useState } from 'react'
+import { db } from "../../firebase/config"
+import { collection, getDocs } from "firebase/firestore"
 
 const NavBar = () => {
     const [categories, setCategories] = useState([])
 
-      useEffect(() => {
-         getCategories().then((categories) => {
-            setCategories(categories)
-    })
-  }, [])
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const productsCollection = collection(db, 'products');
+      const querySnapshot = await getDocs(productsCollection);
+      const uniqueCategories = new Set();
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.category) {
+          uniqueCategories.add(data.category);
+        }
+      });
+
+      setCategories(Array.from(uniqueCategories));
+    };
+
+    fetchCategories();
+  }, []);
 
  return (
     <div className={styles.navbar}>
