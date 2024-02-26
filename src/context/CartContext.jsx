@@ -42,7 +42,7 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const clear = () => {
+  const clearCart = () => {
     setCart([])
     setItemsTotal(0)
     setTotal(0)
@@ -50,7 +50,7 @@ const CartProvider = ({ children }) => {
 
   const isInCart = (id) => cart.find((item) => item.item.id === id)
 
-  const contextValue = { cart, itemsTotal, addItem, removeItem, clear, total }
+  const contextValue = { cart, itemsTotal, addItem, removeItem, clearCart, total }
 
   return <Provider value={contextValue}>{children}</Provider>
 }

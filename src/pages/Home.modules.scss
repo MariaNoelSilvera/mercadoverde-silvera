@@ -4,14 +4,11 @@ $secondary-color: #689f38;
 .Home {
   font-family: 'Arial', sans-serif;
   text-align: center;
-  padding: 20px;
 
   .header {
     background-color: $primary-color;
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-
+ 
     h1 {
       font-size: 2em;
       margin-bottom: 10px;
@@ -19,15 +16,13 @@ $secondary-color: #689f38;
 
     p {
       font-size: 1.2em;
+      padding-bottom: 20px;
     }
   }
 
-  .Plantas,
-  .Macetas {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    color: black;
+  .banner {
+    width: 100%;
+    
   }
 
   .footer {
