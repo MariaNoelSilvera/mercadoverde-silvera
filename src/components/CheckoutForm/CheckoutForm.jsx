@@ -103,7 +103,7 @@ const Order = () => {
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   />
                 </div>
-                <button type="submit">Realizar Pedido</button>
+                <button className={styles.sendOrder} type="submit">Realizar Pedido</button>
               </form>
             </>
           )}

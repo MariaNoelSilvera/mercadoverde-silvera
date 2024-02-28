@@ -4,7 +4,7 @@ import Item from '../Item/Item';
 import Order from '../CheckoutForm/CheckoutForm';
 import { useCartContext } from '../../context/CartContext';
 import EmptyCart from '../EmptyCart/EmptyCart';
-import GoBackIcon from "../GoBack/GoBack"; // Adjust the import path if needed
+import GoBackIcon from "../GoBack/GoBack"; 
 import styles from './Cart.module.scss';
 
 const Cart = () => {
@@ -18,32 +18,40 @@ const Cart = () => {
     <div>
       <GoBackIcon />
       <div className={styles.cartContainer}>
-        <Order className={styles.order} />
+        <div className={styles.orderContainer}>
+          <Order className={styles.order} />
+        </div>
         <div className={styles.cartDetail}>
           {cart.length === 0 ? (
             <EmptyCart />
           ) : (
             <>
-              <h3>DETALLE DEL PEDIDO</h3>
-              <ul className={styles.cartList}>
-                {cart.map((cartItem) => (
-                  <li key={cartItem.item.id} className={styles.cartItem}>
-                    <Item
-                      id={cartItem.item.id}
-                      name={cartItem.item.name}
-                      image={cartItem.item.image}
-                      price={cartItem.item.price}
-                    />
-                    <div className={styles.itemDetails}>
-                      <span className={styles.quantity}>Cantidad: {cartItem.quantity}</span>
-                      <span className={styles.subtotal}>Subtotal: ${cartItem.quantity * cartItem.item.price}</span>
-                    </div>
-                    <button onClick={() => handleRemoveItem(cartItem.item.id)} className={styles.removeButton}>
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              <div className={styles.cartListContainer}>
+                <h3 className={styles.cartListTitle}>DETALLE DEL PEDIDO</h3>
+                <ul className={styles.cartList}>
+                  {cart.map((cartItem) => (
+                    <li key={cartItem.item.id} className={styles.item}>
+                      <div className={styles.itemColumn}>
+                        <Item
+                          id={cartItem.item.id}
+                          name={cartItem.item.name}  
+                          image={cartItem.item.image}
+                          price={cartItem.item.price}
+                        />
+                        <div className={styles.itemDetails}>
+                          <span className={styles.quantity}>Cantidad: {cartItem.quantity}</span>
+                          <span className={styles.subtotal}>Subtotal: ${cartItem.quantity * cartItem.item.price}</span>
+                        </div>
+                      </div>
+                      <div className={styles.removeButtonContainer}>
+                        <button onClick={() => handleRemoveItem(cartItem.item.id)} className={styles.removeButton}>
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className={styles.totalContainer}>
                 <span className={styles.totalLabel}>Cantidad de items:</span>
                 <span className={styles.totalAmount}>{itemsTotal}</span>

@@ -1,9 +1,8 @@
 .formContainer {
-  width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 500px;
+  background-color: white;
 }
 
 form {
@@ -13,6 +12,7 @@ form {
 
 .formGroup {
   margin-bottom: 15px;
+  font-size: 14px;
 }
 
 label {
@@ -27,22 +27,24 @@ textarea {
   box-sizing: border-box;
   margin-top: 5px;
   margin-bottom: 10px;
-  background-color: rgb(232, 226, 226);
   color: black;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-.Button {
-  display:inline-flex;
-  color: #2a7552;
-
+.sendOrder {
+  background-color: #2a7552;
+  color: #fff;
   padding: 8px 12px;
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s ease-in-out;
   border: none;
+  text-align: center;
 
   &:hover {
-    background-color: #13603c;
-    color: rgb(84, 126, 109);
+    background-color: #0b5d0b;
+    color: white;
   }
 }
