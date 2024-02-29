@@ -24,7 +24,6 @@ const Order = () => {
       const ordersCollection = collection(db, 'orders');
       const docRef = await addDoc(ordersCollection, { ...formData });
       setDocId(docRef.id);
-
       clearCart();
     } catch (error) {
       console.error('Error submitting order:', error);
