@@ -1,47 +1,81 @@
 .cartContainer {
-  width: 60%;
+  width: 30%;
   margin: 0 auto;
   padding: 20px;
   color: black;
   display: flex;
-  flex-direction: row; 
+  flex-direction: column; 
   position: relative;
   background-color: #fff;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
 
-.orderContainer {
-  width: 500px;
-}
-
-.cartListTitle {
-   padding: 20px;
-   font-size: large;
-}
-
-.cartListContainer {
-  width: 500px;
-font-size: small;
-}
-
-.item img {
-  max-width: 50%; 
-  height: auto; 
-  margin-bottom: 8px;
+.orderContainer, .cartListContainer {
+  flex-grow: 1;
+  width: auto; 
+  padding: 20px;
 }
 
 .item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; 
   align-items: center;
-  position: relative; 
- 
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #eee; 
 }
 
-.subtotal, .quantity {
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.quantity, .subtotal {
   margin-left: 10px;
   font-size: small;
+}
+
+.removeButtonContainer {
+  position: absolute;
+  top: 50%;
+  right: 10px; 
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.removeButton {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 8px;
+  border: none; 
+  cursor: pointer; 
+}
+
+.clearButton {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none; 
+  cursor: pointer;
+}
+
+.removeClearContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cartListTitle {
+  padding: 20px;
+  font-size: large;
+}
+
+.cartList {
+  list-style: none; 
+  padding: 0;
 }
 
 .totalContainer {
@@ -61,31 +95,22 @@ font-size: small;
   font-weight: bold;
 }
 
-.removeButtonContainer {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  padding-right: 20px;
-  transform: translateY(-50%);
-   display: flex;
-  align-items: center;
-}
+@media (max-width: 768px) {
+  .cartContainer {
+    width: 80%; 
+    flex-direction: column;
+  }
 
-.removeButton {
-  background-color: #e74c3c;
-  color: #fff;
-  padding: 8px;
-}
+  .item {
+    flex-direction: column; 
+    align-items: center; 
+  }
 
-.clearButton {
-  background-color: #e74c3c;
-  color: #fff;
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.removeClearContainer {
-  margin-top: 20px;
-  text-align: center;
+  .removeButtonContainer {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin-top: 10px;
+  }
 }
