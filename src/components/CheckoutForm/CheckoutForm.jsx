@@ -35,7 +35,7 @@ const Order = () => {
       {cart.length > 0 && (
         <div className={styles.formContainer}>
           <>
-            <h3>DATOS DE FACTURACIÓN</h3>
+            <h3 className={styles.checkoutFormTitle}>DATOS DE FACTURACIÓN</h3>
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Nombre:</label>

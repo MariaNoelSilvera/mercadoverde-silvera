@@ -1,4 +1,4 @@
-import cart from '../CartWidget/assets/cart.png'
+import cart from '../../assets/cart.png';
 import styles from './EmptyCart.module.scss';
 
 const EmptyCart = () => {

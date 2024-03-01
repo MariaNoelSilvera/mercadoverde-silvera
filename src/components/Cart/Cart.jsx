@@ -8,10 +8,14 @@ import GoBackIcon from "../GoBack/GoBack";
 import styles from './Cart.module.scss';
 
 const Cart = () => {
-  const { itemsTotal, total, removeItem, cart } = useCartContext();
+  const { itemsTotal, total, removeItem, clearCart, cart } = useCartContext();
 
   const handleRemoveItem = (id) => {
     removeItem(id);
+  };
+
+  const handleClearCart = () => {
+    clearCart();
   };
 
   return (
@@ -34,7 +38,7 @@ const Cart = () => {
                       <div className={styles.itemColumn}>
                         <Item
                           id={cartItem.item.id}
-                          name={cartItem.item.name}  
+                          name={cartItem.item.name}
                           image={cartItem.item.image}
                           price={cartItem.item.price}
                         />
@@ -51,6 +55,11 @@ const Cart = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className={styles.removeClearContainer}>
+                <button onClick={handleClearCart} className={styles.clearButton}>
+                  Vaciar carrito
+                </button>
               </div>
               <div className={styles.totalContainer}>
                 <span className={styles.totalLabel}>Cantidad de items:</span>

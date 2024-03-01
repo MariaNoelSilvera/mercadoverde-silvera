@@ -18,7 +18,6 @@
 .cartListTitle {
    padding: 20px;
    font-size: large;
- 
 }
 
 .cartListContainer {
@@ -76,4 +75,17 @@ font-size: small;
   background-color: #e74c3c;
   color: #fff;
   padding: 8px;
+}
+
+.clearButton {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.removeClearContainer {
+  margin-top: 20px;
+  text-align: center;
 }

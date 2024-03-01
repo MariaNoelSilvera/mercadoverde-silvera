@@ -9,7 +9,6 @@ import { collection, getDocs } from "firebase/firestore"
 const NavBar = () => {
     const [categories, setCategories] = useState([])
 
-
   useEffect(() => {
     const fetchCategories = async () => {
       const productsCollection = collection(db, 'products');
@@ -25,7 +24,6 @@ const NavBar = () => {
 
       setCategories(Array.from(uniqueCategories));
     };
-
     fetchCategories();
   }, []);
 

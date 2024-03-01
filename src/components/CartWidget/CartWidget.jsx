@@ -1,4 +1,4 @@
-import cart from "./assets/cart.png";
+import cart from '../../assets/cart.png';
 import styles from "./CartWidget.module.scss";
 import { useCartContext } from "../../context/CartContext";
 
